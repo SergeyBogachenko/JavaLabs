@@ -1,0 +1,48 @@
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+	double suma;
+	double suma1=0;
+	long BeginCountTime = System.currentTimeMillis();
+	for(int i=0;i<8;i++)
+    {
+       RealThread Thread = new RealThread();
+       Thread.start();
+       try{Thread.join();}
+       catch(Exception Error228)
+       {
+           System.out.println("Mistake");
+       }
+       suma=Thread.suma;
+       suma1=suma+suma1;
+    }
+	long Timepassed = System.currentTimeMillis()-BeginCountTime;
+	System.out.println("Pi="+(suma1=suma1/8));
+	System.out.println("Thread 8");
+	System.out.println("Iterations 1000000*8");
+	System.out.println("Time"+ Timepassed+"ms");
+    }
+}
+class RealThread extends Thread
+{
+    double suma=0;
+    public void run()
+    {
+        double x;
+        double y;//кординаты
+        suma=0;
+        double b=0;
+        for(long i=0;i<10000;i++) {
+            x=Math.random()*1.000000000000001;
+            y=Math.random()*1.000000000000001;
+            double Radius= x*x + y*y;
+            if (Radius<=1)
+            {
+                b+=1;
+            }
+        }
+        suma=(b/10000)*4;
+    }
+}
