@@ -1,0 +1,58 @@
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+	double suma;
+	double result=0;
+	int counterIterations=0;
+	int Totaliterations=0;
+	int counter=0;
+	long BeginCountTime = System.currentTimeMillis();
+	for(int i=0;i<8;i++)
+    {
+       RealThread Thread = new RealThread();
+       Thread.start();
+       try{Thread.join();}
+       catch(Exception Error228)
+       {
+           System.out.println("Mistake");
+       }
+       suma=Thread.sumarize;
+       result=suma+result;
+       counterIterations=Thread.totalIterations;
+       Totaliterations=counterIterations+Totaliterations;
+       counter++;
+    }
+	long Timepassed = System.currentTimeMillis()-BeginCountTime;
+	System.out.println("Pi="+(result=result/8));
+	System.out.println(counter+" "+"Threads");
+	System.out.println(Totaliterations+" "+"Iterations");
+	System.out.println("Time spend"+" "+Timepassed+"ms");
+    }
+}
+class RealThread extends Thread
+{
+    double sumarize =0;
+    int totalIterations=0;
+    public void run()
+    {
+        double x;
+        double y;//кординаты
+        sumarize =0;
+        double include=0;
+        int counterIterations=0;
+        for(long i=0;i<10000;i++) {
+            x=Math.random()*1.0001;
+            y=Math.random()*1.0001;
+            double Circle= x*x + y*y;
+            if (Circle<=1)
+            {
+                include=include+1;
+            }
+            counterIterations++;
+        }
+        sumarize =(include/10000*4);
+        totalIterations=counterIterations;
+    }
+}
