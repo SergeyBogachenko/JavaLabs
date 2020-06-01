@@ -1,0 +1,44 @@
+import java.util.Collections;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+    }
+}
+class cashier{
+    static String name;
+    static String surname;
+    public cashier(String name,String surname){
+        this.name=name;
+        this.surname=surname;
+    }
+}
+class product{
+   String name;
+   double price;
+   public product(String name,double price) {
+       this.name=name;
+       this.price=price;
+   }
+}
+class cashmachine{
+    ArrayList<product>AllClientsProducts=new ArrayList<product>();
+    ArrayList<String> ScanedProducts(ArrayList<product>AllClientsProducts){
+        ArrayList<String> Bill = new ArrayList<String>();
+        long BillTime = System.currentTimeMillis();
+        for (product clientproduct:AllClientsProducts) {
+            int amount=0;
+            if (AllClientsProducts.contains(clientproduct)){
+                amount++;
+                AllClientsProducts.remove(clientproduct);
+            }
+            if (amount!=0) {
+                Bill.add(clientproduct.name + " " + amount + " " + clientproduct.price * amount + "$");
+            }
+        }
+        Collections.sort(Bill);
+        Bill.add(cashier.name+" "+cashier.surname+" "+BillTime);
+        return Bill;
+    }
+}
